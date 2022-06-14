@@ -45,5 +45,5 @@ while(entrada != "esc"){
 
 console.log(alumnos)
 
-const aprobados = alumnos.filter((el) => el.promedio > 7)
+const aprobados = alumnos.filter((el) => el.promedio >= 7)
 console.log(aprobados)
