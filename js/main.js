@@ -47,3 +47,12 @@ console.log(alumnos)
 
 const aprobados = alumnos.filter((el) => el.promedio >= 7)
 console.log(aprobados)
+
+for (const Alumno of alumnos) {
+    let contenedor = document.createElement("div");
+    //Definimos el innerHTML del elemento con una plantilla de texto
+    contenedor.innerHTML = `<h3> Nombre: ${Alumno.nombre}</h3>
+                            <p>  Notas: ${Alumno.notas}</p>
+                            <b> Promedio: ${Alumno.promedio}</b>`;
+    document.body.appendChild(contenedor);
+}
