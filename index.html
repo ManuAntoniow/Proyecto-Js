@@ -7,18 +7,46 @@
     <title>Javascript</title>
     <meta name="description" content="Pagina de noyas de alumnos">
 	<meta name="keywords"  content="notas, promedios, alumnos, escuelas">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header>
+    <header class="titulo" id="titulo">
         <h1>Simulador Interactivo</h1>
         <h3>Antoniow</h3>
     </header>
     <hr>
-    <main></main>
+    <main>
+        <div class="card mb-3 border-dark">
+			<form method="post" id="formulario">
+				<div class="form-outline mb-4">
+                    <label class="form-label" for="input-nombre">Nombre</label>
+					<input type="text" id="input-nombre" class="form-control" placeholder="ingresa nombre del alumno"/>
+				</div>
+				<div class="form-outline mb-4">
+                    <label class="form-label" for="input-nota1">Nota 1</label>
+					<input type="number" id="input-nota1" class="form-control" placeholder="ingresa nota"/>
+				</div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="input-nota2">Nota 2</label>
+					<input type="number" id="input-nota2" class="form-control" placeholder="ingresa nota"/>
+				</div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="input-nota3">Nota 3</label>
+					<input type="number" id="input-nota3" class="form-control" placeholder="ingresa nota"/>
+				</div>
+				<button type="submit" id="btn-enviar" class="btn btn--2 btn-primary btn-block mb-4">Enviar</button>
+			</form>
+		</div>
+        <section>
+            <button id="boton1" class="btn btn-primary">Mostrar Alumnos</button>
+            <button id="boton2" class="btn btn-success">Mostrar Alumnos Aprobados</button>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
