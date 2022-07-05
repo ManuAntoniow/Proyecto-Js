@@ -47,6 +47,12 @@ btnEnviar.addEventListener('click', (e) => {
     let notas = [Number(inputNota1.value), Number(inputNota2.value), Number(inputNota3.value)]
     let pro = promedio(notas)
     alumnos.push(new Alumno(inputNombre.value, notas, pro))
+    swal({
+        title: 'GENIAL',
+        text: 'Datos de alumno almacenado correctamente',
+        icon: 'success',
+        confirmButtonText: 'Siguiente'
+    })
 })
 
 const btn1 = document.querySelector('#boton1')
@@ -76,6 +82,8 @@ btn1.onclick = () => {
     }
     guardarLocal("listaAlumnos", JSON.stringify(alumnos))
 }
+
+//<button class="btn btn-danger buttonDelete" type="button">X</button>
 
 btn2.onclick = () => {
     const aprobados = alumnos.filter((el) => el.promedio >= 7)
