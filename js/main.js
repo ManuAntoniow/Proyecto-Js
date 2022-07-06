@@ -1,13 +1,59 @@
 
-const titulo = document.querySelector('#titulo')
-const randomColor = () => {
-    return Math.round( Math.random() * 255 )
+class Profesor {
+    constructor(nombre, password, materias) {
+        this.id = Math.random()
+        this.nombre  = nombre
+        this.password = password
+        this.materias = materias
+    }
 }
-titulo.addEventListener('mouseover', () => {
-    const red = randomColor()
-    const green = randomColor()
-    const blue = randomColor()
-    titulo.style.color = `rgb(${red}, ${green}, ${blue})`
+
+const profesores = []
+profesores.push(new Profesor("Andres", "profe1", materias=["matematica", "scnat"])) 
+profesores.push(new Profesor("Julio", "profe2", materias=["", "scsoc"])) 
+let btnConfirmar = document.querySelector('#btn-confirmar')
+console.log(profesores)
+
+btnConfirmar.addEventListener('click', (e) => {
+    e.preventDefault()
+    let usuario = document.getElementById('input-profesor').value
+    let pass = document.getElementById('input-password').value
+    for (var i = 0; i < profesores.length; i++) {
+        usuario == profesores[i].nombre ? usuarioCorrecto = true : null
+        pass == profesores[i].password ? passCorrecto = true : null
+    }
+    if (usuarioCorrecto == true && passCorrecto == true){
+        swal({
+            title: 'GENIAL',
+            text: 'Te logueaste correctamente',
+            icon: 'success',
+            button: 'Ok'
+        })
+    }
+    else if (usuarioCorrecto == false) {
+        swal({
+            title: 'ERROR',
+            text: 'Usuario incorrecto',
+            icon: 'error',
+            button: 'Reintentar'
+        })
+    }
+    else if (passCorrecto == false) {
+        swal({
+            title: 'ERROR',
+            text: 'Contraseña incorrecta',
+            icon: 'error',
+            button: 'Reintentar'
+        })
+    }
+    else {
+        swal({
+            title: 'ERROR',
+            text: 'Error al iniciar sesion',
+            icon: 'error',
+            button: 'Reintentar'
+        })
+    }
 })
 
 function promedio(num){
@@ -23,7 +69,7 @@ class Alumno {
         this.id = Math.random()
         this.nombre  = nombre.toUpperCase()
         this.notas = notas
-        this.promedio  = parseFloat(promedio)
+        this.promedio  = Math.round(promedio)
     }
 }
 
@@ -51,7 +97,7 @@ btnEnviar.addEventListener('click', (e) => {
         title: 'GENIAL',
         text: 'Datos de alumno almacenado correctamente',
         icon: 'success',
-        confirmButtonText: 'Siguiente'
+        button: 'Siguiente'
     })
 })
 
@@ -61,29 +107,35 @@ const listaContenedor = document.querySelector('.listaContenedor')
 
 btn1.onclick = () => {
     console.log(alumnos)
-    // const datosAnteriores = document.getElementsByClassName("listaContenedor")
-    // console.log(datosAnteriores)
-    // datosAnteriores[0].remove()
+    const datosAnteriores = document.getElementById("eliminar")
+    // console.log(datosAnteriores.firstElementChild)
+    if (datosAnteriores.firstElementChild != null) {
+        for (var i = 0; i < alumnos.length; i++) {
+            console.log(i, alumnos.length)
+            datosAnteriores.removeChild(datosAnteriores.firstElementChild)
+        }
+    }
     for (const Alumno of alumnos) {
         let contenedor = document.createElement("div")
         contenedor.innerHTML =`
-        <div class="row datosAlumno" id="${Alumno.id}">
+        <div class="row datosAlumno border-bottom" id="${Alumno.id}">
             <div class="col">
                 <h4>${Alumno.nombre}</h6>
             </div>
             <div class="col-5">
                 <h4>${Alumno.notas}</h4>
             </div>
-            <div class="col">
-                <h4>${Alumno.promedio}</h4>
+            <div class="col ">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>${Alumno.promedio}</h4>
+                    <button class="btn btn-danger buttonDelete" type="button">X</button>
+                </div>
             </div>
         </div>`
         listaContenedor.append(contenedor)
     }
     guardarLocal("listaAlumnos", JSON.stringify(alumnos))
 }
-
-//<button class="btn btn-danger buttonDelete" type="button">X</button>
 
 btn2.onclick = () => {
     const aprobados = alumnos.filter((el) => el.promedio >= 7)

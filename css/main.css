@@ -20,6 +20,14 @@ form{
 button{
     margin: 5px;
     width: auto;
+    height: 30px;
+    /* font-size: 30px; */
+}
+label{
+    font-size: medium;
+}
+.usuario{
+    font-size: large;
 }
 p{
     margin: 5px;
