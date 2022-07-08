@@ -6,8 +6,66 @@ html {
     font-size: 62.5%;
     font-family: 'Fredoka', sans-serif;
 }
+
+.page-1 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/imagenes/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.page-2 {
+    height: 100vh;
+    background-image: url(/imagenes/background2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.formulario {
+    width: 400px;
+    padding: 1rem;
+    margin: 2rem;
+    background-color: rgb(51, 51, 51, 0.602);
+    text-align: center;
+}
+
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+
+.boton-ingresar {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    font-size: 10px;
+    cursor: pointer;
+    color: #222;
+}
+
 .titulo{
-    margin: 15px;
+    padding: 10px;
+    background-color: white;
 }
 .card{
     width: 300px;

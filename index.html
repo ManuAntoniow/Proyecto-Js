@@ -13,28 +13,26 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <header class="titulo">
-        <h1>Simulador Interactivo</h1>
-        <h2>Antoniow</h2>
-    </header>
-    <hr>
+<body class="page-1">
     <main>
+        <div class="text-center">
+            <h1>Simulador Interactivo</h1>
+            <h2>Antoniow</h2>
+        </div>
         <section class="container">
             <div class="row justify-content-center">
-                <div class="card border-dark col-12 col-md-6 justify-content-center">
-                    <form id="formulario-profesores">
-                        <div class="form-outline mb-4">
-                            <label class="form-label usuario" for="input-profesor">Profesor</label>
-                            <input type="text" id="input-profesor" class="form-control" placeholder="ingresa nombre del profesor"/>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label usuario" for="input-password">Contraseña</label>
-                            <input type="password" id="input-password" class="form-control" placeholder="ingresa contraseña">
-                        </div>
-                        <button type="submit" id="btn-confirmar" class="btn btn-primary mb-4">Ingresar</button>
-                    </form>
-                </div>
+                <form class="formulario" id="formulario-profesores">
+                    <h2 class="create-account">Iniciar Sesion</h2>
+                    <div class="form-outline mb-4">
+                        <label class="form-label usuario" for="input-profesor">Profesor</label>
+                        <input type="text" id="input-profesor" class="form-control" placeholder="ingresa nombre del profesor"/>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label usuario" for="input-password">Contraseña</label>
+                        <input type="password" id="input-password" class="form-control" placeholder="ingresa contraseña">
+                    </div>
+                    <button type="submit" id="btn-confirmar" class="boton-ingresar">Ingresar</button>
+                </form>
             </div>
         </section>
     </main>
