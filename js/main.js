@@ -14,6 +14,8 @@ profesores.push(new Profesor("Julio", "profe2", materias=["", "scsoc"]))
 console.log(profesores)
 
 let btnConfirmar = document.querySelector('#btn-confirmar')
+let usuarioCorrecto = false
+let passCorrecto = false
 
 btnConfirmar.addEventListener('click', (e) => {
     e.preventDefault()
