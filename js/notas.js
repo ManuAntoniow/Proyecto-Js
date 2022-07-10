@@ -44,6 +44,19 @@ inputNota1.addEventListener('change', revisarNota)
 inputNota2.addEventListener('change', revisarNota)
 inputNota3.addEventListener('change', revisarNota)
 
+btnEnviar.addEventListener('click', (e) => {
+    e.preventDefault()
+    let notas = [Number(inputNota1.value), Number(inputNota2.value), Number(inputNota3.value)]
+    let pro = promedio(notas)
+    alumnos.push(new Alumno(inputNombre.value, notas, pro))
+    swal({
+        title: 'GENIAL',
+        text: 'Datos de alumno almacenado correctamente',
+        icon: 'success',
+        button: 'Siguiente'
+    })
+})
+
 btn1.onclick = () => {
     console.log(alumnos)
     const datosAnteriores = document.getElementById("eliminar")
