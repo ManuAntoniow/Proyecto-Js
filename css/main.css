@@ -2,8 +2,8 @@
 	margin: 0;
 	padding: 0;
 }
-html {
-    font-size: 62.5%;
+
+body {
     font-family: 'Fredoka', sans-serif;
 }
 
@@ -54,7 +54,6 @@ html {
     width: 60%;
     margin: auto;
     border: solid thin white;
-    padding: .7rem;
     border-radius: 2rem;
     background-color: white;
     font-weight: 600;
@@ -65,7 +64,7 @@ html {
 
 .titulo{
     padding: 10px;
-    background-color: white;
+    background-color: rgb(236, 196, 150);
 }
 .card{
     width: 300px;
@@ -78,8 +77,6 @@ form{
 button{
     margin: 5px;
     width: auto;
-    height: 30px;
-    /* font-size: 30px; */
 }
 label{
     font-size: medium;

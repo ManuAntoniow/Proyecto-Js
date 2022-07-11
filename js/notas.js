@@ -46,15 +46,26 @@ inputNota3.addEventListener('change', revisarNota)
 
 btnEnviar.addEventListener('click', (e) => {
     e.preventDefault()
-    let notas = [Number(inputNota1.value), Number(inputNota2.value), Number(inputNota3.value)]
-    let pro = promedio(notas)
-    alumnos.push(new Alumno(inputNombre.value, notas, pro))
-    swal({
-        title: 'GENIAL',
-        text: 'Datos de alumno almacenado correctamente',
-        icon: 'success',
-        button: 'Siguiente'
-    })
+    console.log(inputNombre.value)
+    if (inputNombre.value === "") {
+        swal({
+            title: 'ERROR',
+            text: 'No se a ingresado el nombre del alumno',
+            icon: 'error',
+            button: 'Reintentar'
+        })
+    }
+    else {
+        let notas = [Number(inputNota1.value), Number(inputNota2.value), Number(inputNota3.value)]
+        let pro = promedio(notas)
+        alumnos.push(new Alumno(inputNombre.value, notas, pro))
+        swal({
+            title: 'GENIAL',
+            text: 'Datos de alumno almacenado correctamente',
+            icon: 'success',
+            button: 'Siguiente'
+        })
+    }
 })
 
 btn1.onclick = () => {
