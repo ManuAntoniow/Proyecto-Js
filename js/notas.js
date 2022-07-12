@@ -9,7 +9,7 @@ class Alumno {
 }
 
 function promedio(num){
-    total = num[0] + num[1] + num[2] 
+    let total = num[0] + num[1] + num[2] 
     console.log(total)
     return(total / 3)
 }
@@ -18,6 +18,46 @@ function revisarNota(event) {
     const input = event.target;
     input.value <= 0 ? (input.value = 1) : null
     input.value >= 11 ? (input.value = 10) : null
+}
+
+const cargarAlumnos = () => {
+    datosAnteriores.innerHTML = ''
+    for (const Alumno of alumnos) {
+        let contenedor = document.createElement("div")
+        contenedor.innerHTML =`
+        <div class="row datosAlumno border-bottom" id="${Alumno.id}">
+            <div class="col">
+                <h4>${Alumno.nombre}</h6>
+            </div>
+            <div class="col-5">
+                <h4>${Alumno.notas}</h4>
+            </div>
+            <div class="col ">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>${Alumno.promedio}</h4>
+                    <button onclick="eliminarAlumno(${Alumno.id})" class="btn btn-danger buttonDelete">X</button>
+                </div>
+            </div>
+        </div>`
+        listaContenedor.append(contenedor)
+    }
+    guardarLocal("listaAlumnos", JSON.stringify(alumnos))
+}
+
+const eliminarAlumno = (id) => {
+    const alumno = alumnos.find((Alumno) => Alumno.id === id)
+    const indice = alumnos.indexOf(alumno)
+    alumnos.splice(indice, 1)
+    Toastify({
+        text: `Se eliminó el alumno ${alumno.nombre}`,
+        position: 'left',
+        gravity: 'bottom',
+        duration: 5000,
+        style: {
+            background: "linear-gradient(to right, #f17b5d, #f02f2f)",
+        }
+    }).showToast()
+    cargarAlumnos()
 }
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) }
@@ -39,6 +79,7 @@ let btnEnviar = document.querySelector('#btn-enviar')
 const btn1 = document.querySelector('#boton1')
 const btn2 = document.querySelector('#boton2')
 const listaContenedor = document.querySelector('.listaContenedor')
+const datosAnteriores = document.getElementById("eliminar")
 
 inputNota1.addEventListener('change', revisarNota)
 inputNota2.addEventListener('change', revisarNota)
@@ -68,36 +109,16 @@ btnEnviar.addEventListener('click', (e) => {
     }
 })
 
-btn1.onclick = () => {
-    console.log(alumnos)
-    const datosAnteriores = document.getElementById("eliminar")
-    // console.log(datosAnteriores.firstElementChild)
-    if (datosAnteriores.firstElementChild != null) {
-        for (var i = 0; i < alumnos.length; i++) {
-            console.log(i, alumnos.length)
-            datosAnteriores.removeChild(datosAnteriores.firstElementChild)
-        }
+btn1.onclick = () => { 
+    if ( alumnos.length == 0) {
+        swal({
+            title: 'ERROR',
+            text: 'No se a ingresado ningun alumno',
+            icon: 'error',
+            button: 'Reintentar'
+        })
     }
-    for (const Alumno of alumnos) {
-        let contenedor = document.createElement("div")
-        contenedor.innerHTML =`
-        <div class="row datosAlumno border-bottom" id="${Alumno.id}">
-            <div class="col">
-                <h4>${Alumno.nombre}</h6>
-            </div>
-            <div class="col-5">
-                <h4>${Alumno.notas}</h4>
-            </div>
-            <div class="col ">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4>${Alumno.promedio}</h4>
-                    <button class="btn btn-danger buttonDelete" type="button">X</button>
-                </div>
-            </div>
-        </div>`
-        listaContenedor.append(contenedor)
-    }
-    guardarLocal("listaAlumnos", JSON.stringify(alumnos))
+    cargarAlumnos() 
 }
 
 btn2.onclick = () => {

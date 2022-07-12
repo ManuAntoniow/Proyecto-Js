@@ -1,0 +1,4 @@
+[
+    {"nombre": "Andres", "password": "profe1", "materias": ["Matematica", "ScNat"]},
+    {"nombre": "Julio", "password": "profe2", "materias": ["Lengua", "ScSoc"]}
+]

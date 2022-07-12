@@ -8,10 +8,14 @@ class Profesor {
     }
 }
 
-const profesores = []
-profesores.push(new Profesor("Andres", "profe1", materias=["matematica", "scnat"])) 
-profesores.push(new Profesor("Julio", "profe2", materias=["", "scsoc"])) 
-console.log(profesores)
+let profesores = []
+
+fetch('../profesores.json')
+    .then((resp) => resp.json())
+    .then((data) => {
+        profesores = data
+        console.log(profesores)
+    })
 
 let btnConfirmar = document.querySelector('#btn-confirmar')
 let usuarioCorrecto = false
