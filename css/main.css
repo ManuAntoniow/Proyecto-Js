@@ -2,12 +2,10 @@
 	margin: 0;
 	padding: 0;
 }
-
-body {
+body{
     font-family: 'Fredoka', sans-serif;
 }
-
-.page-1 {
+.page-1{
     height: 100vh;
     display: flex;
     align-items: center;
@@ -18,24 +16,20 @@ body {
     background-size: cover;
     color: white;
 }
-
-.page-2 {
+.page-2{
     height: 100vh;
-    background-image: url(../imagenes/background2.jpg);
+    background-image: url(../imagenes/fondo.jpg);
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
-
-.formulario {
+.formulario{
     width: 400px;
     padding: 1rem;
     margin: 2rem;
     background-color: rgb(51, 51, 51, 0.602);
     text-align: center;
 }
-
-.formulario input {
+.formulario input{
     width: 70%;
     display: block;
     margin: auto;
@@ -49,8 +43,7 @@ body {
     font-size: .9rem;
     color: white;
 }
-
-.boton-ingresar {
+.boton-ingresar{
     width: 60%;
     margin: auto;
     border: solid thin white;
@@ -61,10 +54,18 @@ body {
     cursor: pointer;
     color: #222;
 }
-
 .titulo{
+    display: flex;
     padding: 10px;
     background-color: rgb(236, 196, 150);
+}
+.titulo div{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.icon{
+    margin: 20px;
+    height: 100px;
 }
 .card{
     width: 300px;

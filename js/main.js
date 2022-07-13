@@ -1,33 +1,26 @@
 
-class Profesor {
-    constructor(nombre, password, materias) {
-        this.id = Math.random()
-        this.nombre  = nombre
-        this.password = password
-        this.materias = materias
-    }
-}
-
 let profesores = []
+let btnConfirmar = document.querySelector('#btn-confirmar')
 
-fetch('../profesores.json')
+fetch('./profesores.json')
     .then((resp) => resp.json())
     .then((data) => {
         profesores = data
         console.log(profesores)
     })
 
-let btnConfirmar = document.querySelector('#btn-confirmar')
-let usuarioCorrecto = false
-let passCorrecto = false
-
 btnConfirmar.addEventListener('click', (e) => {
     e.preventDefault()
+    let usuarioCorrecto = false
+    let passCorrecto = false
     let usuario = document.getElementById('input-profesor').value
     let pass = document.getElementById('input-password').value
-    for (var i = 0; i < profesores.length; i++) {
-        usuario == profesores[i].nombre ? usuarioCorrecto = true : null
-        pass == profesores[i].password ? passCorrecto = true : null
+    for (const Profesor of profesores) {
+        if (usuario == Profesor.nombre) {
+            usuarioCorrecto = true
+            sessionStorage.setItem('usuarioActual', JSON.stringify(Profesor))
+        }
+        pass == Profesor.password ? passCorrecto = true : null
     }
     if (usuarioCorrecto == true && passCorrecto == true){
         swal({

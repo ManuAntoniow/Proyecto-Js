@@ -1,66 +1,8 @@
 
-class Alumno {
-    constructor(nombre, notas, promedio) {
-        this.id = Math.random()
-        this.nombre  = nombre.toUpperCase()
-        this.notas = notas
-        this.promedio  = Math.round(promedio)
-    }
-}
+const usuario = JSON.parse(sessionStorage.getItem("usuarioActual"))
+console.log(usuario)
 
-function promedio(num){
-    let total = num[0] + num[1] + num[2] 
-    console.log(total)
-    return(total / 3)
-}
-
-function revisarNota(event) {
-    const input = event.target;
-    input.value <= 0 ? (input.value = 1) : null
-    input.value >= 11 ? (input.value = 10) : null
-}
-
-const cargarAlumnos = () => {
-    datosAnteriores.innerHTML = ''
-    for (const Alumno of alumnos) {
-        let contenedor = document.createElement("div")
-        contenedor.innerHTML =`
-        <div class="row datosAlumno border-bottom" id="${Alumno.id}">
-            <div class="col">
-                <h4>${Alumno.nombre}</h6>
-            </div>
-            <div class="col-5">
-                <h4>${Alumno.notas}</h4>
-            </div>
-            <div class="col ">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4>${Alumno.promedio}</h4>
-                    <button onclick="eliminarAlumno(${Alumno.id})" class="btn btn-danger buttonDelete">X</button>
-                </div>
-            </div>
-        </div>`
-        listaContenedor.append(contenedor)
-    }
-    guardarLocal("listaAlumnos", JSON.stringify(alumnos))
-}
-
-const eliminarAlumno = (id) => {
-    const alumno = alumnos.find((Alumno) => Alumno.id === id)
-    const indice = alumnos.indexOf(alumno)
-    alumnos.splice(indice, 1)
-    Toastify({
-        text: `Se eliminó el alumno ${alumno.nombre}`,
-        position: 'left',
-        gravity: 'bottom',
-        duration: 5000,
-        style: {
-            background: "linear-gradient(to right, #f17b5d, #f02f2f)",
-        }
-    }).showToast()
-    cargarAlumnos()
-}
-
-const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) }
+elegirMateria(usuario.materias)
 
 const alumnos = []
 const almacenados = JSON.parse(localStorage.getItem("listaAlumnos"))
@@ -78,6 +20,7 @@ let inputNota3 = document.querySelector('#input-nota3')
 let btnEnviar = document.querySelector('#btn-enviar')
 const btn1 = document.querySelector('#boton1')
 const btn2 = document.querySelector('#boton2')
+const btn3 = document.querySelector('#boton3')
 const listaContenedor = document.querySelector('.listaContenedor')
 const datosAnteriores = document.getElementById("eliminar")
 
@@ -128,4 +71,8 @@ btn2.onclick = () => {
         console.log(document.getElementById(Alumno.id))
         document.getElementById(Alumno.id).style.color = "green"
     }
+}
+
+btn3.onclick = () => {
+    elegirMateria(usuario.materias)
 }
