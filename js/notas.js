@@ -9,7 +9,7 @@ const almacenados = JSON.parse(localStorage.getItem("listaAlumnos"))
 if (almacenados != null) {
     console.log(almacenados)
     for (const objeto of almacenados) {
-        alumnos.push(new Alumno(objeto.nombre, objeto.notas, objeto.promedio))
+        alumnos.push(new Alumno(objeto.nombre, objeto.notas, objeto.promedio, objeto.materia))
     }
 }
 
@@ -42,7 +42,7 @@ btnEnviar.addEventListener('click', (e) => {
     else {
         let notas = [Number(inputNota1.value), Number(inputNota2.value), Number(inputNota3.value)]
         let pro = promedio(notas)
-        alumnos.push(new Alumno(inputNombre.value, notas, pro))
+        alumnos.push(new Alumno(inputNombre.value, notas, pro, materiaActiva))
         swal({
             title: 'GENIAL',
             text: 'Datos de alumno almacenado correctamente',

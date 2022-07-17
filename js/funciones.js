@@ -9,11 +9,12 @@ class Profesor {
 }
 
 class Alumno {
-    constructor(nombre, notas, promedio) {
+    constructor(nombre, notas, promedio, materia) {
         this.id = Math.random()
         this.nombre  = nombre.toUpperCase()
         this.notas = notas
         this.promedio  = Math.round(promedio)
+        this.materia = materia
     }
 }
 
@@ -31,6 +32,7 @@ function revisarNota(event) {
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) }
 
+let materiaActiva
 let titulo = document.getElementById("tituloMateria")
 const elegirMateria = (materias) => {
     swal({
@@ -51,10 +53,12 @@ const elegirMateria = (materias) => {
             case "materiaA":
                 swal("Genial", `seleccionaste ${materias[0]}`, "success")
                 titulo.innerText = `Alumnos ${materias[0]}`
+                materiaActiva = materias[0]
                 break
             case "materiaB":
                 swal("Genial", `seleccionaste ${materias[1]}`, "success")
                 titulo.innerText = `Alumnos ${materias[1]}`
+                materiaActiva = materias[1]
                 break
         }
     })
@@ -63,23 +67,26 @@ const elegirMateria = (materias) => {
 const cargarAlumnos = () => {
     datosAnteriores.innerHTML = ''
     for (const Alumno of alumnos) {
-        let contenedor = document.createElement("div")
-        contenedor.innerHTML =`
-        <div class="row datosAlumno border-bottom" id="${Alumno.id}">
-            <div class="col">
-                <h4>${Alumno.nombre}</h6>
-            </div>
-            <div class="col-5">
-                <h4>${Alumno.notas}</h4>
-            </div>
-            <div class="col ">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4>${Alumno.promedio}</h4>
-                    <button onclick="eliminarAlumno(${Alumno.id})" class="btn btn-danger buttonDelete">X</button>
+        if (Alumno.materia === materiaActiva) {
+            let contenedor = document.createElement("div")
+            contenedor.innerHTML =`
+            <div class="row datosAlumno border-bottom" id="${Alumno.id}">
+                <div class="col">
+                    <h4>${Alumno.nombre}</h6>
                 </div>
-            </div>
-        </div>`
-        listaContenedor.append(contenedor)
+                <div class="col-5">
+                    <h4>${Alumno.notas}</h4>
+                </div>
+                <div class="col ">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>${Alumno.promedio}</h4>
+                        <button onclick="eliminarAlumno(${Alumno.id})" class="btn btn-danger buttonDelete">X</button>
+                    </div>
+                </div>
+            </div>`
+            listaContenedor.append(contenedor)
+        }
+        
     }
     guardarLocal("listaAlumnos", JSON.stringify(alumnos))
 }
