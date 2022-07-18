@@ -68,8 +68,10 @@ btn2.onclick = () => {
     const aprobados = alumnos.filter((el) => el.promedio >= 7)
     console.log(aprobados)
     for (const Alumno of aprobados) {
-        console.log(document.getElementById(Alumno.id))
-        document.getElementById(Alumno.id).style.color = "green"
+        if (Alumno.materia === materiaActiva) {
+            console.log(document.getElementById(Alumno.id))
+            document.getElementById(Alumno.id).style.color = "green"
+        }
     }
 }
 
